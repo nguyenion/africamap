@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Africa Map</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+                    <script src="http://datamaps.github.io/scripts/0.4.4/datamaps.all.min.js"></script>
+                    <div id="map" style="position: center; width: 550px; height: 550px;"></div>
+                    <button type="button" class="btn btn-light" id="DZA" onclick="buttonClick('DZA')">Algeria</button>
+                    <button type="button" class="btn btn-light" id="AGO" onclick="buttonClick('AGO')">Angola</button>
+                    <button type="button" class="btn btn-light" id="BEN" onclick="buttonClick('BEN')">Benin</button>
+                    <button type="button" class="btn btn-light" id="BWA" onclick="buttonClick('BWA')">Botswana</button>
+                    <button type="button" class="btn btn-light" id="BFA" onclick="buttonClick('BFA')">Burkina Faso</button>
+                    <button type="button" class="btn btn-light" id="BDI" onclick="buttonClick('BDI')">Burundi</button>
+                    <button type="button" class="btn btn-light" id="CMR" onclick="buttonClick('CMR')">Cameroon</button>
+                    <button type="button" class="btn btn-light" id="CAF" onclick="buttonClick('CAF')">Central African Republic</button>
+                    <hr style="height:0;margin:5px 0 0; visibility:hidden;" />
+                    <button type="button" class="btn btn-light" id="TCD" onclick="buttonClick('TCD')">Chad</button>
+                    <button type="button" class="btn btn-light" id="COD" onclick="buttonClick('COD')">Democratic Republic of the Congo</button>
+                    <button type="button" class="btn btn-light" id="DJI" onclick="buttonClick('DJI')">Djibouti</button>
+                    <button type="button" class="btn btn-light" id="ETH" onclick="buttonClick('ETH')">Ethiopia</button>
+                    <button type="button" class="btn btn-light" id="ERI" onclick="buttonClick('ERI')">Eritrea</button>
+                    <button type="button" class="btn btn-light" id="EGY" onclick="buttonClick('EGY')">Egypt</button>
+                    <button type="button" class="btn btn-light" id="GNQ" onclick="buttonClick('GNQ')">Equatorial Guinea</button>
+                    <hr style="height:0;margin:5px 0 0; visibility:hidden;" />
+                    <button type="button" class="btn btn-light" id="GAB" onclick="buttonClick('GAB')">Gabon</button>
+                    <button type="button" class="btn btn-light" id="GMB" onclick="buttonClick('GMB')">Gambia</button>
+                    <button type="button" class="btn btn-light" id="GHA" onclick="buttonClick('GHA')">Ghana</button>
+                    <button type="button" class="btn btn-light" id="GNB" onclick="buttonClick('GNB')">Guinea Bissau</button>
+                    <button type="button" class="btn btn-light" id="GIN" onclick="buttonClick('GIN')">Guinea</button>
+                    <button type="button" class="btn btn-light" id="CIV" onclick="buttonClick('CIV')">Ivory Coast</button>
+                    <button type="button" class="btn btn-light" id="KEN" onclick="buttonClick('KEN')">Kenya</button>
+                    <button type="button" class="btn btn-light" id="LSO" onclick="buttonClick('LSO')">Lesotho</button>
+                    <button type="button" class="btn btn-light" id="LBY" onclick="buttonClick('LBY')">Libya</button>
+                    <button type="button" class="btn btn-light" id="LBR" onclick="buttonClick('LBR')">Liberia</button>
+                    <hr style="height:0;margin:5px 0 0; visibility:hidden;" />
+                    <button type="button" class="btn btn-light" id="MDG" onclick="buttonClick('MDG')">Madagascar</button>
+                    <button type="button" class="btn btn-light" id="MWI" onclick="buttonClick('MWI')">Malawi</button>
+                    <button type="button" class="btn btn-light" id="MLI" onclick="buttonClick('MLI')">Mali</button>
+                    <button type="button" class="btn btn-light" id="MRT" onclick="buttonClick('MRT')">Mauritania</button>
+                    <button type="button" class="btn btn-light" id="MAR" onclick="buttonClick('MAR')">Morocco</button>
+                    <button type="button" class="btn btn-light" id="MOZ" onclick="buttonClick('MOZ')">Mozambique</button>
+                    <button type="button" class="btn btn-light" id="NAM" onclick="buttonClick('NAM')">Nambia</button>
+                    <button type="button" class="btn btn-light" id="NER" onclick="buttonClick('NER')">Niger</button>
+                    <button type="button" class="btn btn-light" id="NGA" onclick="buttonClick('NGA')">Nigeria</button>
+                    <hr style="height:0;margin:5px 0 0; visibility:hidden;" />
+                    <button type="button" class="btn btn-light" id="COG" onclick="buttonClick('COG')">Republic of the Congo</button>
+                    <button type="button" class="btn btn-light" id="RWA" onclick="buttonClick('RWA')">Rwanda</button>
+                    <button type="button" class="btn btn-light" id="SDN" onclick="buttonClick('SDN')">Sudan</button>
+                    <button type="button" class="btn btn-light" id="SEN" onclick="buttonClick('SEN')">Senegal</button>
+                    <button type="button" class="btn btn-light" id="SLE" onclick="buttonClick('SLE')">Sierra Leone</button>
+                    <button type="button" class="btn btn-light" id="SOM" onclick="buttonClick('SOM')">Somalia</button>
+                    <button type="button" class="btn btn-light" id="ZAF" onclick="buttonClick('ZAF')">South Africa</button>
+                    <hr style="height:0;margin:5px 0 0; visibility:hidden;" />
+                    <button type="button" class="btn btn-light" id="SSD" onclick="buttonClick('SSD')">South Sudan</button>
+                    <button type="button" class="btn btn-light" id="SWZ" onclick="buttonClick('SWZ')">Swaziland</button>
+                    <button type="button" class="btn btn-light" id="TZA" onclick="buttonClick('TZA')">Tanzania</button>
+                    <button type="button" class="btn btn-light" id="TUN" onclick="buttonClick('TUN')">Tunisia</button>
+                    <button type="button" class="btn btn-light" id="TGO" onclick="buttonClick('TGO')">Togo</button>
+                    <button type="button" class="btn btn-light" id="UGA" onclick="buttonClick('UGA')">Uganda</button>
+                    <button type="button" class="btn btn-light" id="ESH" onclick="buttonClick('ESH')">Western Sahara</button>
+                    <button type="button" class="btn btn-light" id="ZMB" onclick="buttonClick('ZMB')">Zambia</button>
+                    <button type="button" class="btn btn-light" id="ZWE" onclick="buttonClick('ZWE')">Zimbabwe</button>
+                    <hr style="height:0;margin:25px 0 0; visibility:hidden;" />
+                    <button type="button" class="btn btn-success" id="check" onclick="check()">Check Answers</button>
+                    <button type="button" class="btn btn-danger" id="reset" onclick="window.location.reload()">Reset</button>
+                </td>
+                <td style="vertical-align: baseline">
+                    <h1>Africa Map</h1>
+                    <H3>Instructions</H3>
+                    <ol>
+                        <li>Click on a country name</li>
+                        <li>Click on what country on the map you think it is</li>
+                        <li>After placing all (or how many ever items you want), click on Check Answers</li>
+                        <li>It will show which answers were right, and the correct answers for the wrong ones</li>
+                    </ol>
+                    <h3>Color key</h3>
+                    <ul>
+                        <li>Manila: unused country</li>
+                        <li>Gray: not applicable</li>
+                        <li>Blue: used country</li>
+                        <li>Green: answered correctly</li>
+                        <li>Red: not answered or incorrectly answered</li>
+                    </ul>
+                    <h3>Smaller sections of Africa</h3>
+                    <a href="south.html">Southern Africa</a>
+                    <Br>
+                    <a href="north.html">Northern Africa</a>
+                    <br>
+                    <a href="westcoast.html">Northwestern Coast</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        let map = new Datamap({
+            element: document.getElementById("map"),
+            scope: 'world',
+            geographyConfig: {
+                popupTemplate: getCurrentString
+            },
+            setProjection: function(element) {
+                var projection = d3.geo.equirectangular()
+                    .center([23, 0])
+                    .rotate([4.4, 0])
+                    .scale(415)
+                    .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+                var path = d3.geo.path()
+                    .projection(projection);
+
+                return {path: path, projection: projection};
+            },
+            done: whenClicked,
+            fills: {
+                defaultFill: "#F9E79F",
+                notAfrica: "#bbb",
+                incorrect: "#EC7063",
+                correct: "#58D68D",
+                finished: "#85C1E9",
+            },
+            data: {
+                'ESP': {fillKey: 'notAfrica'},
+                'PRT': {fillKey: 'notAfrica'},
+                'ITA': {fillKey: 'notAfrica'},
+                'GRC': {fillKey: 'notAfrica'},
+                'TUR': {fillKey: 'notAfrica'},
+                'SYR': {fillKey: 'notAfrica'},
+                'ISR': {fillKey: 'notAfrica'},
+                'PSE': {fillKey: 'notAfrica'},
+                'SAU': {fillKey: 'notAfrica'},
+                'JOR': {fillKey: 'notAfrica'},
+                'YEM': {fillKey: 'notAfrica'},
+                'OMN': {fillKey: 'notAfrica'},
+                'ARE': {fillKey: 'notAfrica'},
+                'QAT': {fillKey: 'notAfrica'},
+                'IRQ': {fillKey: 'notAfrica'},
+                'IRN': {fillKey: 'notAfrica'},
+                'TKM': {fillKey: 'notAfrica'},
+                'LBN': {fillKey: 'notAfrica'},
+                'CYP': {fillKey: 'notAfrica'},
+                'KWT': {fillKey: 'notAfrica'},
+                '-99': {fillKey: 'notAfrica'},
+            }
+        })
+        let countries = {};
+        let currentlySelected = "";
+        function getCurrentString (geography, data){
+            if (countries[geography.id] === undefined) {
+                return '<div class="hoverinfo"><strong>???</strong></div>'
+            } else {
+                return '<div class="hoverinfo"><strong>' + countries[geography.id] + '</strong></div>';
+            }
+        }
+        function whenClicked (data) {
+            data.svg.selectAll('.datamaps-subunit').on('click', function (geography) {
+                if (countries[geography.id] !== undefined) {
+                    let oldCode = document.getElementById(isoCodes[countries[geography.id]]);
+                    oldCode.classList.add("btn-light");
+                    oldCode.classList.remove("btn-secondary");
+                }
+                if (currentlySelected !== "") {
+                    countries[geography.id] = countryCodes[currentlySelected];
+                }
+                const buttonElem = document.getElementById(currentlySelected)
+                buttonElem.classList.remove("btn-primary");
+                buttonElem.classList.add("btn-secondary");
+                let obj = {};
+                obj[geography.id] = {fillKey: 'finished'}
+                map.updateChoropleth(obj)
+                currentlySelected = "";
+            })
+        }
+        function buttonClick(countryCode) {
+            const buttonElem = document.getElementById(countryCode);
+            try {
+                const currentElem = document.getElementById(currentlySelected);
+                currentElem.classList.add("btn-light");
+                currentElem.classList.remove("btn-primary");
+            } catch (error) {
+                console.log(error)
+            }
+            if (buttonElem.classList.contains("btn-light")) {
+                buttonElem.classList.remove("btn-light");
+                buttonElem.classList.add("btn-primary");
+                currentlySelected = countryCode;
+            }
+        }
+        function check() {
+            for (let key in countryCodes) {
+                if (countries[key] === countryCodes[key]) {
+                    let obj = {};
+                    obj[key] = {fillKey: 'correct'};
+                    map.updateChoropleth(obj)
+                } else {
+                    let obj = {};
+                    obj[key] = {fillKey: 'incorrect'};
+                    map.updateChoropleth(obj)
+                    const incorrectAnswer = countries[key];
+                    countries[key] = "You answered: </strong>" + incorrectAnswer + ". <strong>The correct answer is: </strong>" + countryCodes[key];
+                }
+            }
+        }
+    </script>
+    <script>
+        const countryCodes = {
+            "DZA": "Algeria",
+            "AGO": "Angola",
+            "BEN": "Benin",
+            "BWA": "Botswana",
+            "BFA": "Burkina Faso",
+            "CMR": "Cameroon",
+            "CAF": "Central African Republic",
+            "TCD": "Chad",
+            "COD": "Democratic Republic of the Congo",
+            "DJI": "Djibouti",
+            "ETH": "Ethiopia",
+            "ERI": "Eritrea",
+            "EGY": "Egypt",
+            "GNQ": "Equatorial Guinea",
+            "GAB": "Gabon",
+            "GMB": "Gambia",
+            "GHA": "Ghana",
+            "GNB": "Guinea Bissau",
+            "GIN": "Guinea",
+            "CIV": "Ivory Coast",
+            "KEN": "Kenya",
+            "LSO": "Lesotho",
+            "LBY": "Libya",
+            "LBR": "Liberia",
+            "MDG": "Madagascar",
+            "MWI": "Malawi",
+            "MLI": "Mali",
+            "MRT": "Mauritania",
+            "MAR": "Morocco",
+            "MOZ": "Mozambique",
+            "NAM": "Nambia",
+            "NER": "Niger",
+            "NGA": "Nigeria",
+            "COG": "Republic of the Congo",
+            "SDN": "Sudan",
+            "SEN": "Senegal",
+            "SLE": "Sierra Leone",
+            "SOM": "Somalia",
+            "ZAF": "South Africa",
+            "SSD": "South Sudan",
+            "SWZ": "Swaziland",
+            "TUN": "Tunisia",
+            "TGO": "Togo",
+            "UGA": "Uganda",
+            "ESH": "Western Sahara",
+            "ZMB": "Zambia",
+            "ZWE": "Zimbabwe",
+            "RWA": "Rwanda",
+            "BDI": "Burundi",
+            "TZA": "Tanzania"
+        }
+        const isoCodes = {
+            "Tanzania": "TZA",
+            "Rwanda": "RWA",
+            "Burundi": "BDI",
+            "Algeria": "DZA",
+            "Angola": "AGO",
+            "Benin": "BEN",
+            "Botswana": "BWA",
+            "Burkina Faso": "BFA",
+            "Cameroon": "CMR",
+            "Central African Republic": "CAF",
+            "Chad": "TCD",
+            "Democratic Republic of the Congo": "COD",
+            "Djibouti": "DJI",
+            "Ethiopia": "ETH",
+            "Eritrea": "ERI",
+            "Egypt": "EGY",
+            "Equatorial Guinea": "GNQ",
+            "Gabon": "GAB",
+            "Gambia": "GMB",
+            "Ghana": "GHA",
+            "Guinea Bissau": "GNB",
+            "Guinea": "GIN",
+            "Ivory Coast": "CIV",
+            "Kenya": "KEN",
+            "Lesotho": "LSO",
+            "Libya": "LBY",
+            "Liberia": "LBR",
+            "Madagascar": "MDG",
+            "Malawi": "MWI",
+            "Mali": "MLI",
+            "Mauritania": "MRT",
+            "Morocco": "MAR",
+            "Mozambique": "MOZ",
+            "Nambia": "NAM",
+            "Niger": "NER",
+            "Nigeria": "NGA",
+            "Republic of the Congo": "COG",
+            "Sudan": "SDN",
+            "Senegal": "SEN",
+            "Sierra Leone": "SLE",
+            "Somalia": "SOM",
+            "South Africa": "ZAF",
+            "South Sudan": "SSD",
+            "Swaziland": "SWZ",
+            "Tunisia": "TUN",
+            "Togo": "TGO",
+            "Uganda": "UGA",
+            "Western Sahara": "ESH",
+            "Zambia": "ZMB",
+            "Zimbabwe": "ZWE"
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+</html>
