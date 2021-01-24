@@ -1,0 +1,17 @@
+.col {
+    border: 1px solid rgba(39,41,43,0.1);
+}
+.col-9 {
+    border: 1px solid rgba(39,41,43,0.1);
+}
+.container {
+    background-color: rgba(39,41,43,0.03);
+}
+body {
+    margin:5px 5px 5px 5px;
+}
+
+td {
+    border:2px solid black;
+    padding:5px;
+}
